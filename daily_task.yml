@@ -1,0 +1,23 @@
+name: Daily Task
+
+on:
+  schedule:
+    - cron: "31 16 * * *"
+
+
+jobs:
+  run_task:
+    name: Run Daily Task
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 # Replace with your desired Python version
+
+      - name: Run daily task
+        run: python update.py
